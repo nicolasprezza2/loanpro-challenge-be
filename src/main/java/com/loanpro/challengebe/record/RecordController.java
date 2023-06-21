@@ -1,25 +1,27 @@
 package com.loanpro.challengebe.record;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/record")
+@RequestMapping("/v1/record")
+@RequiredArgsConstructor
 public class RecordController {
 
     private final RecordService recordService;
 
-    @Autowired
-    public RecordController(RecordService recordService) {
-        this.recordService = recordService;
+    @GetMapping
+    public ResponseEntity<Page<Record>> getRecordsForUser(Pageable pageable) {
+        return ResponseEntity.ok()
+                .body(this.recordService.findActiveRecordsForCurrentUser(pageable));
     }
 
-    @GetMapping
-    public ResponseEntity getRecordsForUser() {
-        this.recordService.getAllForCurrentUser();
-        return null;
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity deleteRecord(@PathVariable Long id) {
+        this.recordService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

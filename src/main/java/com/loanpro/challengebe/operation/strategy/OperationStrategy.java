@@ -1,7 +1,6 @@
 package com.loanpro.challengebe.operation.strategy;
 
 import com.loanpro.challengebe.operation.OperationType;
-import com.sun.istack.NotNull;
 
 import java.math.BigDecimal;
 

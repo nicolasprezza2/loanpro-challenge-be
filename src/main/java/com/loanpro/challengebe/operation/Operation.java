@@ -2,20 +2,16 @@ package com.loanpro.challengebe.operation;
 
 import com.sun.istack.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "operation")
+@NoArgsConstructor(force = true)
 @Getter
 public class Operation {
-    /**
-     * ○id
-     * ○ type (addition, subtraction, multiplication, division, square_root, random_string) ○
-     * cost
-     */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

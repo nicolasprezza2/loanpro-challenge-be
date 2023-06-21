@@ -1,7 +1,6 @@
 package com.loanpro.challengebe.operation.strategy;
 
 import com.loanpro.challengebe.operation.OperationType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -13,7 +12,6 @@ public class OperationStrategyFactory {
 
     private Map<OperationType, OperationStrategy> operationStrategies;
 
-    @Autowired
     public OperationStrategyFactory(Set<OperationStrategy> strategies) {
         operationStrategies = new HashMap<>();
         strategies.forEach( st -> {

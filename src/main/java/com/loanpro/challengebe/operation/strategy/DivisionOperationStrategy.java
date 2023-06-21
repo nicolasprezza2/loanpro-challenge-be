@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Component
 public class DivisionOperationStrategy implements OperationStrategy {
@@ -24,7 +25,7 @@ public class DivisionOperationStrategy implements OperationStrategy {
     public String run(@NotNull  BigDecimal ...numbers) {
         this.validateNumbers(numbers);
 
-        return numbers[0].divide(numbers[1]).toString();
+        return numbers[0].divide(numbers[1], RoundingMode.HALF_UP).toString();
     }
 
     @Override

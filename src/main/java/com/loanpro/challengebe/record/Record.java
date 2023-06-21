@@ -1,10 +1,10 @@
 package com.loanpro.challengebe.record;
 
 import com.loanpro.challengebe.operation.Operation;
-import com.loanpro.challengebe.operation.OperationResponse;
 import com.loanpro.challengebe.user.User;
 import com.sun.istack.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "record")
+@NoArgsConstructor(force = true)
 @Getter
 public class Record {
 
@@ -52,12 +53,4 @@ public class Record {
         this.date = LocalDateTime.now();
         this.active = true;
     }
-    /*
-    * ○id
-○ operation_id
-○ user_id
-○ amount
-○ user_balance
-○ operation_response ○ date
-*/
 }

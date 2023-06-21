@@ -2,26 +2,24 @@ package com.loanpro.challengebe.operation.initiator;
 
 import com.loanpro.challengebe.operation.Operation;
 import com.loanpro.challengebe.operation.OperationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.loanpro.challengebe.operation.OperationType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static com.loanpro.challengebe.operation.OperationType.*;
 
 @Component
+@RequiredArgsConstructor
 public class OperationInitiator {
 
     private final OperationRepository repository;
 
-    @Autowired
-    public OperationInitiator(OperationRepository repository) {
-        this.repository = repository;
-    }
+    private static Map<OperationType, Operation> operations = new HashMap<>();
 
     @PostConstruct
     public void initiate() {
@@ -29,12 +27,20 @@ public class OperationInitiator {
         Operation subtraction = new Operation(SUBTRACTION, new BigDecimal(1));
         Operation multiplication = new Operation(MULTIPLICATION, new BigDecimal(1));
         Operation division = new Operation(DIVISION, new BigDecimal(1));
-        Operation squareFoot = new Operation(SQUARE_ROOT, new BigDecimal(2.5));
+        Operation squareRoot = new Operation(SQUARE_ROOT, new BigDecimal(2.5));
         Operation randomString = new Operation(RANDOM_STRING, new BigDecimal(2));
 
         List<Operation> allOps = Arrays.asList(addition, subtraction, multiplication,
-                division, squareFoot, randomString);
+                division, squareRoot, randomString);
 
-        repository.saveAll(allOps);
+        List<Operation> savedOperations = repository.saveAll(allOps);
+        savedOperations.forEach(op -> {
+            operations.put(op.getType(), op);
+        });
+    }
+
+
+    public static Operation getByType(OperationType type) {
+        return operations.get(type);
     }
 }
