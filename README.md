@@ -2,27 +2,21 @@ LoanPro - Readme
 
 Technologies used:
 - Open JDK 8
-- Npm 9.5.1
-- Node 18.16.0
 
-Other technologies used: Spring framework, Spring Security, React.js
+Other technologies used: Spring framework, Spring Security
 
 Startup -  Backend
 - In a terminal, go to project root folder
 - Run: ./gradlew build
 - Run: ./gradlew bootRun
 
-Startup - Frontend
-- In a terminal, go to project root folder
-- Run npm install
-- Run npm start
 
 App credentials:
 - Username:          test@loanpro.com
 - Password:          challenge
 
 How to use:
-- Follow Startup section in this file to start both FE and BE
+- Follow Startup section in this file to start the BE
 - Go to: http://localhost:3000/
 - You should see a login screen, enter the App credentials declared in this file 
 - Once logged in you should see the calculator and you can start using it.
