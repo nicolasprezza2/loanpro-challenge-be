@@ -7,20 +7,20 @@ Other technologies used: Spring framework, Spring Security
 
 Startup -  Backend
 - In a terminal, go to project root folder
+- Add env variables:
+    DB_USER=<your user>
+    DB_PASS=<your pass>
+    DB_URL=<DB URL>
 - Run: ./gradlew build
 - Run: ./gradlew bootRun
 
-
-App credentials:
-- Username:          test@loanpro.com
-- Password:          challenge
 
 How to use:
 - Follow Startup section in this file to start the BE
 - Go to: http://localhost:3000/
 - You should see a login screen, enter the App credentials declared in this file 
 - Once logged in you should see the calculator and you can start using it.
-- The user "test@loanpro.com" has 100 points to use. Each calculation has a cost:
+- Each user has 100 points to use. Each calculation has a cost:
   Addition, subtraction, multiplication and division cost 1 point
   Square root costs 2.5 and Random String costs 2 points
 - Once you are out of balance you should restart the backend so the balance for the user is restarted
