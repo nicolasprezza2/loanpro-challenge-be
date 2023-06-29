@@ -20,6 +20,7 @@ public class ChallengeBeApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("http://localhost:3000")
+						.allowedOrigins("https://loanpro-challenge-fe-production.up.railway.app/")
 						.allowedMethods("GET", "POST","PUT", "DELETE");
 			}
 		};
